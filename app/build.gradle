@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.3"
+    defaultConfig {
+        applicationId "com.wang.android70"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    testCompile 'junit:junit:4.12'
+    /*运行时权限申请*/
+    compile 'com.yanzhenjie:permission:1.0.6'
+    /*Android裁剪库*/
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.4.+'
+    /*这个库需要自己写界面*/
+    compile 'com.oginotihiro:cropview:1.0.0'
+    /*比较全面的图片裁剪库
+    *https://github.com/Yalantis/uCrop
+    * */
+    compile 'com.github.yalantis:ucrop:2.2.1'
+    /*权限申请*/
+    compile 'com.github.hotchemi:permissionsdispatcher:2.4.0'
+    apt 'com.github.hotchemi:permissionsdispatcher-processor:2.4.0'
+  }
